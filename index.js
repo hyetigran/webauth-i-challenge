@@ -27,7 +27,9 @@ server.use(session({
 }))
 
 server.use("/api", userRouter);
-
+server.get('/', (req, res) => {
+  res.send('Welcome to Auth II Challenge')
+});
 
 const PORT = process.env.PORT || 4000;
 
