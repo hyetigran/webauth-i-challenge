@@ -15,6 +15,17 @@ router.get("/users", restricted, (req, res) => {
   })
 });
 
+router.get("/logout", (req, res) => {
+  if(req.session) {
+    req.session.destroy(err => {
+      if(err) {
+        res.send('Something went wront')
+      } else {
+        res.send('You are logged out')
+      }
+  })
+}})
+
 router.post("/register", (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 12)
